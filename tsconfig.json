@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "sourceMap": true,
+    "strict": true,
+    "jsx": "react",
+    "allowJs": true,
+    "skipLibCheck": false,
+    "esModuleInterop": true,
+    "checkJs": false,
+    "rootDir": "src",
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "experimentalDecorators": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "outDir": "dist"
+  },
+  "include": [
+    "src"
+  ]
+}
