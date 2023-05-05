@@ -22,6 +22,12 @@ export interface IReportDefinition {
 
 export interface IReportAppDefinition {
 
+    getName(): string;
+
+    getPath(): string;
+
+    setInitialReportPath(initialReportPath: string): void;
+
 }
 
 export interface IEventContentItem {
@@ -100,7 +106,7 @@ export interface IOpenReportAppOptions {
      * Called before the application definition is actually applied.
      * Give the opportunity to change the definition.
      */
-    onDefinition?: (report: IReportAppDefinition) => void;
+    onDefinition?: (app: IReportAppDefinition) => void;
 
     /**
      * If the method exist and return true then the default error dispatcher is not
