@@ -19,6 +19,6 @@ This example is embedding/driving icCube Dashboards using Vue3.
 
 ### Reference Documentation
 
-Refer to this [page](./Reference.md) for a complete documentation of the plugin dev. kit.
+Refer to this [page](Reference.md) for a complete documentation of the plugin dev. kit.
 
 _

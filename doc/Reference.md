@@ -10,7 +10,7 @@ similar to the dashboard permalinks explained below in this document.
 
 The simplest way to embed an icCube dashboard is to set up an `iframe` using as `src` the permalink of that report.
 
-Refer to this [page](./EmbeddingPermaLink.md) for more details.
+Refer to this [page](EmbeddingPermaLink.md) for more details.
 
 ### Driving icCube Dashboards from the Host Application
 
@@ -25,16 +25,16 @@ the host application and should be more flexible and more efficient regarding th
 JS libraries.
 
 In case using the `div` approach is not possible (e.g., Javascript code clash between icCube and the host
-application), using an `iframe` is the way to go. Please refer to this [page](./iFrameUsageConsideration.md)
+application), using an `iframe` is the way to go. Please refer to this [page](iFrameUsageConsideration.md)
 for more details about using an `iframe` within the host application.
 
-Refer to this [page](./EmbeddingJavascript.md) for mode details.
+Refer to this [page](EmbeddingJavascript.md) for mode details.
 
 ### Console
 
 Both the icCube `Server Administration UI` and the `Dashboards Editor` can be embedded as well using an approach
 similar to the dashboard permalinks explained earlier in this document.
 
-Refer to this [page](./EmbeddingConsole.md) for more details.
+Refer to this [page](EmbeddingConsole.md) for more details.
 
 _

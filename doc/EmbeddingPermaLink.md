@@ -47,11 +47,11 @@ As an example the following is passing both the `China` and the `Japan` values t
     <i>the above ic3params parameter has not been encoded for the sake of clarity</i>
 </pre>
 
-You might refer to this [page](./EmbeddingJavascript.md#open-report) for more details about report parameters.
+You might refer to this [page](EmbeddingJavascript.md#open-report) for more details about report parameters.
 
 #### URL Parameter: Configuration
 
 The specified console URL might contain additional parameters related to the way the application is being configured.
-Please refer to this [page](./EmbeddingConfiguration.md) for more details.
+Please refer to this [page](EmbeddingConfiguration.md) for more details.
 
 _

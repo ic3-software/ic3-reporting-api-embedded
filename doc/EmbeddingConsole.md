@@ -1,6 +1,6 @@
 ## icCube Dashboards API: Console
 
-Similarly to the Dashboards [permalinks](./EmbeddingPermaLink.md), both the `Server Administration UI` and
+Similarly to the Dashboards [permalinks](EmbeddingPermaLink.md), both the `Server Administration UI` and
 the `Dashboards Editor` can be embedded using a `iframe` approach. The host application needs to set up the
 `iframe.src` attribute with the console URLs.
 
@@ -19,6 +19,6 @@ And the `Dashboards Editor`:
 ### Configuration
 
 The specified console URL might contain some parameters related to the way the application is being configured.
-Please refer to this [page](./EmbeddingConfiguration.md) for more details.
+Please refer to this [page](EmbeddingConfiguration.md) for more details.
 
 _

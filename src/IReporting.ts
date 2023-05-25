@@ -15,9 +15,31 @@ export interface IReportDefinition {
 
     setDefaultCubeName(name: string): void;
 
+    /**
+     * Returns the theme ID set in the report.
+     */
     getThemeUID(): string;
 
+    /**
+     * Sets the theme ID used by the report. With {@see setChangeThemeCallback}, you can set a callback to change the
+     * options of this theme.
+     * @param uid ID of the theme.
+     */
     setThemeUID(uid: string): void;
+
+    /**
+     * Set a callback that changes the theme before it is applied to the dashboard. For example, with this function
+     * you can change the primary color of the theme.
+     *
+     * Examples:
+     * - Change the primary color of the theme to red: `theme.palette.primary.main = "#ff0000";`
+     * - Change default chart color: `theme.palette.ic3.chartSingleColors.default = "#ff0000";`
+     * - Change background: `theme.palette.ic3.pageBackgroundColor = "#ff0000";`
+     * - Change selected color: `theme.palette.ic3.selected = "#ff0000";`
+     *
+     * @param theme a MUI theme. Note the type is not exported to prevent React import issues.
+     */
+    setChangeThemeCallback(callback: (theme: any) => void): void;
 }
 
 export interface IReportAppDefinition {
@@ -83,7 +105,7 @@ export interface IOpenReportOptions {
 
     /**
      * Called before the report definition is actually applied. Give the opportunity
-     * to change the definition (e.g., schema name).
+     * to change the definition (e.g., schema name, theme).
      */
     onDefinition?: (report: IReportDefinition) => void;
 
@@ -92,6 +114,11 @@ export interface IOpenReportOptions {
      * being called. Give the caller the opportunity to render the error.
      */
     onError?: (error: any) => boolean;
+
+    /**
+     * Called when the report is loaded without errors.
+     */
+    onSuccess?: () => void;
 
 }
 
@@ -113,6 +140,11 @@ export interface IOpenReportAppOptions {
      * being called. Give the caller the opportunity to render the error.
      */
     onError?: (error: any) => boolean;
+
+    /**
+     * Called when the application is loaded without errors.
+     */
+    onSuccess?: () => void;
 }
 
 export interface IPathInfo {

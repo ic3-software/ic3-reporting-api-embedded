@@ -8,6 +8,6 @@ details about how the authentication might be performed when embedding icCube.
 
 Once a `reverse proxy` has been put in place, there is no specific issue related to using an `iframe` and more
 specifically the host and the icCube Dashboards application can exchange information for performing a two ways
-communication. You might refer to this [page](./EmbeddingJavascript.md) for more details.
+communication. You might refer to this [page](EmbeddingJavascript.md) for more details.
 
 _

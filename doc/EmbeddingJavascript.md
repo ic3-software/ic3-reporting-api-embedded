@@ -46,7 +46,7 @@ const url = "/icCube/report/viewer?ic3demo=";
 
 **Configuration:** the specified console URL might contain some parameters related to the way the application is being
 configured.
-Please refer to this [page](./EmbeddingConfiguration.md) for more details.
+Please refer to this [page](EmbeddingConfiguration.md) for more details.
 
 ### Loading icCube (div)
 
@@ -60,7 +60,7 @@ class is available [here](https://github.com/ic3-software/ic3-reporting-api-embe
 for up-to-date information.
 
 **Configuration:** while loading icCube several parameters related to the way the application is being configured can
-be specified. Please refer to this [page](./EmbeddingConfiguration.md) for more details.
+be specified. Please refer to this [page](EmbeddingConfiguration.md) for more details.
 
 ### Open Report
 
