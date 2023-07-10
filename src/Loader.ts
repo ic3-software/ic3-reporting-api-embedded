@@ -425,6 +425,10 @@ export class DashboardsLoaderDivContext {
                 }).then(indexHtml => {
 
                     if (indexHtml.indexOf("ic3-reporting-application") === -1) {
+                        console.error("[Loader] unexpected content in index.html (possibly not logged?)", {
+                            url: this.urlAppIndexHtml,
+                            response: indexHtml
+                        });
                         throw new Error("[Loader] unexpected content in index.html (possibly not logged?)");
                     }
 
