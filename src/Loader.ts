@@ -40,7 +40,8 @@ export interface IDashboardsLoaderFrameParams {
 }
 
 /**
- * Support for embedding icCube via an iFrame.
+ * Support for embedding icCube via an iFrame : append an iFrame to the element as referenced by 'params.containerId'.
+ * Does nothing if the iFrame is present using ( 'params.frameId', 'params.url' ) as key.
  */
 export function DashboardsLoaderFrame(params: IDashboardsLoaderFrameParams) {
 
@@ -52,9 +53,20 @@ export function DashboardsLoaderFrame(params: IDashboardsLoaderFrameParams) {
         throw new Error("[Loader] (iFrame) missing container [" + containerId + "]")
     }
 
-    console.log("[Loader] (iFrame) icCube URL : " + url);
-    console.log("[Loader] (iFrame)  container : " + containerId);
-    console.log("[Loader] (iFrame)   callback : " + onReady);
+    console.log("[Loader] (iFrame)  icCube URL : " + url);
+    console.log("[Loader] (iFrame) containerId : " + containerId);
+    console.log("[Loader] (iFrame)     frameId : " + frameId);
+    console.log("[Loader] (iFrame)         url : " + url);
+    console.log("[Loader] (iFrame)    callback : " + onReady);
+
+    const key = (frameId ?? "") + ":" + url;
+
+    const iFrameExisting = document.querySelector("[data-ic3=\"" + key + "\"]");
+
+    if(iFrameExisting) {
+        console.log("[Loader] (iFrame)         nop : existing iFrame for frameId / URL");
+        return;
+    }
 
     const wnd = (window as any);
 
@@ -62,15 +74,15 @@ export function DashboardsLoaderFrame(params: IDashboardsLoaderFrameParams) {
 
     wnd.ic3loader[containerId] = (ic3: IReporting) => {
 
-        console.log("[Loader] (iFrame)      ready : ", ic3);
+        console.log("[Loader] (iFrame)       ready : ", ic3);
 
         delete wnd.ic3loader[containerId];
         onReady && onReady(ic3);
 
     }
 
-    // setup an iFrame passing a url w/   &cb=window.name.of.callback
-    //      window. or parent. then in icCube ...
+    // Create & append an iFrame passing a URL w/ &cb=window.name.of.callback
+    //      window. or parent. then in icCube
 
     const iFrame = document.createElement('iframe');
 
@@ -92,8 +104,9 @@ export function DashboardsLoaderFrame(params: IDashboardsLoaderFrameParams) {
     const src = url + sep + "ic3callback=ic3loader." + containerId;
 
     iFrame.setAttribute("src", src);
+    iFrame.setAttribute("data-ic3", key);
 
-    console.log("[Loader] (iFrame)     iFrame : " + src);
+    console.log("[Loader] (iFrame)         src : " + src);
 
     containerELT.appendChild(iFrame);
 
