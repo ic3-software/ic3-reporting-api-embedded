@@ -52,6 +52,13 @@ export interface AppPrintReportNotificationPayload {
     paperSizeName?: PaperSizeName;
     paperOrientation?: PaperOrientation;
 
+    // Expressed in paper units (Letter, Legal, Ledger in inches, others in mm).
+
+    marginTop?: number;
+    marginRight?: number;
+    marginBottom?: number;
+    marginLeft?: number;
+
 }
 
 export interface IAppPrintReportNotification extends IAppNotificationWithPayload<AppPrintReportNotificationPayload> {
