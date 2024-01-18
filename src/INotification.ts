@@ -168,6 +168,9 @@ export interface IAppNotificationCallback {
 
     onSuccess: (token: IAppNotificationToken) => void;
 
-    onError: (token: IAppNotificationToken, error: any) => void;
+    /**
+     * Return true if the error has been handled : the app. error handler won't be called.
+     */
+    onError: (token: IAppNotificationToken, error: any) => void | boolean;
 
 }
