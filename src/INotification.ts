@@ -1,6 +1,7 @@
 import {PaperOrientation, PaperSizeName} from "./ITypes";
 
 export type AppNotificationType =
+    "logout" |
     "edit-report" |
     "print-report-dialog" |
     "print-report" |
@@ -36,6 +37,12 @@ export interface IAppNotificationWithPayload<PAYLOAD> extends IAppNotification {
      * E.g., print-report file name.
      */
     readonly payload: PAYLOAD;
+
+}
+
+export interface AppLogoutNotification extends IAppNotification {
+
+    readonly type: "logout";
 
 }
 
