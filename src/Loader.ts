@@ -1,14 +1,15 @@
 import {IReporting} from "./IReporting";
 
 export type AppType =
-    "embedded-div-init" |
-    "console" /* shell for accessing the following applications */ |
-    "viewer" /* report viewer */ |
-    "editor" /* report editor */ |
     "admin" /* report administration */ |
     "appEditor" /* report application (i.e. lists of reports) editor */ |
+    "console" /* shell for accessing the following applications */ |
+    "editor" /* report editor */ |
+    "embedded-div-init" |
     "gadgetEditor" /* gadget editor */ |
-    "mdxConsole" /* [internal] used by the Server UI */;
+    "mdxConsole" /* [not-yet-activated] used by the Server UI */ |
+    "viewer" /* report viewer */
+    ;
 
 
 export interface IDashboardsLoaderFrameParams {
@@ -63,7 +64,7 @@ export function DashboardsLoaderFrame(params: IDashboardsLoaderFrameParams) {
 
     const iFrameExisting = document.querySelector("[data-ic3=\"" + key + "\"]");
 
-    if(iFrameExisting) {
+    if (iFrameExisting) {
         console.log("[Loader] (iFrame)         nop : existing iFrame for frameId / URL");
         return;
     }

@@ -1,6 +1,6 @@
 {
   "name": "@ic3/reporting-api-embedded",
-  "version": "8.4.12",
+  "version": "8.4.13",
   "description": "icCube dashboards API (embedded)",
   "homepage": "https://github.com/ic3-software/ic3-reporting-api-embedded",
   "repository": "https://github.com/ic3-software/ic3-reporting-api-embedded",
@@ -11,7 +11,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@types/node": "20.12.12",
+    "@types/node": "20.14.10",
     "del-cli": "5.1.0",
     "typescript": "5.4.5"
   },
