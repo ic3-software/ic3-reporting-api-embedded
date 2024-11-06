@@ -23,13 +23,20 @@ export interface IReportDefinition {
     /**
      * Sets the theme ID used by the report. With {@see setChangeThemeCallback}, you can set a callback to change the
      * options of this theme.
+     *
      * @param uid ID of the theme.
      */
     setThemeUID(uid: string): void;
 
     /**
-     * Set a callback that changes the theme before it is applied to the dashboard. For example, with this function
+     * Set a callback that changes the theme before it is applied to the dashboard. For example,
      * you can change the primary color of the theme.
+     *
+     * The caller should not keep the theme instance as it might contain a proxy that will be
+     * revoked after this call.
+     *
+     * If you need to modify a Javascript function of the theme and later need to print the dashboard,
+     * then use the 'setThemeProcessorCall' instead.
      *
      * Examples:
      * - Change the primary color of the theme to red: `theme.palette.primary.main = "#ff0000";`
@@ -40,6 +47,19 @@ export interface IReportDefinition {
      * @param theme a MUI theme. Note the type is not exported to prevent React import issues.
      */
     setChangeThemeCallback(callback: (theme: any) => void): void;
+
+    /**
+     * The call must be available from the installed plugins. This method takes precedences over
+     * the 'setChangeThemeCallback' method.
+     */
+    setThemeProcessorCall(call: IThemeProcessorCall): void;
+}
+
+export interface IThemeProcessorCall
+{
+    name : string;
+    params?: any;
+
 }
 
 export interface IReportAppDefinition {
@@ -60,7 +80,9 @@ export interface IEventContentItem {
     caption: string;
 
     name: string;
+
     uniqueName: string;
+    // uniqueNameCS: boolean;
 }
 
 export type IEventContent = IEventContentItem | IEventContentItem[]
@@ -106,6 +128,9 @@ export interface IOpenReportOptions {
     /**
      * Called before the report definition is actually applied. Give the opportunity
      * to change the definition (e.g., schema name, theme).
+     *
+     * The caller should not keep the report instance as it might contain a proxy that will be
+     * revoked after this call.
      */
     onDefinition?: (report: IReportDefinition) => void;
 
