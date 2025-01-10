@@ -104,6 +104,15 @@ export interface IOpenGadgetOptions {
 
 }
 
+export interface IOpenMdxConsoleOptions {
+
+    /**
+     * Path of the initial query.
+     */
+    path: string;
+
+}
+
 export interface IOpenReportOptions {
 
     embedded?: boolean;

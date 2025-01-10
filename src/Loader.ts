@@ -7,7 +7,7 @@ export type AppType =
     "editor" /* report editor */ |
     "embedded-div-init" |
     "gadgetEditor" /* gadget editor */ |
-    "mdxConsole" /* [not-yet-activated] used by the Server UI */ |
+    "mdxConsole" /* MDX Console (replacing the Server UI MDX IDE) */ |
     "viewer" /* report viewer */
     ;
 
