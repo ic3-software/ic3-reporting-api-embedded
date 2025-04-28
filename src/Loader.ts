@@ -1,4 +1,5 @@
 import {IReporting} from "./IReporting";
+import {FilterPanelViewStorageFactory} from "./ViewsAPI";
 
 export type AppType =
     "admin" /* report administration */ |
@@ -211,6 +212,12 @@ export interface IDashboardsLoaderDivParams {
      * The type of application  (default: 'viewer')
      */
     appType?: AppType;
+
+    /**
+     * An optional filter panel view storage facility in the host application : if none is provided
+     * the browser's local storage is being used.
+     */
+    filterPanelViewStorageFactory?:  FilterPanelViewStorageFactory;
 
 }
 
