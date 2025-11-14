@@ -11,11 +11,13 @@ The dev. kit source code is available on GitHub [here](https://github.com/ic3-so
 
 ### [ic3-demo-embedded-react](https://github.com/ic3-software/ic3-demo-embedded-react)
 
-This example is embedding/driving icCube dashboards using React and Material-UI (Typescript).
+This example shows how to embed/drive icCube dashboards using React and Material-UI (Typescript).
+
+You can find a React app example of embedding a dashboard using a div here: [one page example](https://github.com/ic3-software/ic3-demo-embedded-react/blob/main/src/app/BasicApp.tsx). 
 
 ### [ic3-demo-embedded-vue3](https://github.com/ic3-software/ic3-demo-embedded-vue3)
 
-This example is embedding/driving icCube Dashboards using Vue3.
+This example shows how to embed/drive icCube Dashboards using Vue3.
 
 ### Reference Documentation
 
