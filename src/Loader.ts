@@ -1,16 +1,17 @@
 import {IReporting} from "./IReporting";
-import {FilterPanelViewStorageFactory} from "./ViewsAPI";
-
 export type AppType =
-    "admin" /* report administration */ |
+    "adminEditor" /* report administration */ |
     "appEditor" /* report application (i.e. lists of reports) editor */ |
+    "appViewer" /* report viewer */ |
     "console" /* shell for accessing the following applications */ |
-    "editor" /* report editor */ |
+    "dashboardEditor" /* report editor */ |
+    "dashboardViewer" /* report viewer */ |
     "embedded-div-init" |
     "gadgetEditor" /* gadget editor */ |
-    "mdxConsole" /* MDX Console (replacing the Server UI MDX IDE) */ |
-    "viewer" /* report viewer */
+    "mdxConsole" /* MDX Console (replacing the Server UI MDX IDE) */
     ;
+
+import {FilterPanelViewStorageFactory} from "./ViewsAPI";
 
 
 export interface IDashboardsLoaderFrameParams {
@@ -209,7 +210,7 @@ export interface IDashboardsLoaderDivParams {
     resizingContainer?: HTMLElement;
 
     /**
-     * The type of application  (default: 'viewer')
+     * The type of application  (default: 'dashboardViewer')
      */
     appType?: AppType;
 
@@ -399,7 +400,7 @@ export class DashboardsLoaderDivContext {
 
                     uid,
 
-                    appType: appType ?? "viewer",
+                    appType: appType ?? "dashboardViewer",
 
                     container,
 

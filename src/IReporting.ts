@@ -35,7 +35,7 @@ export interface IReportDefinition {
      * The caller should not keep the theme instance as it might contain a proxy that will be
      * revoked after this call.
      *
-     * If you need to modify a Javascript function of the theme and later need to print the dashboard,
+     * If you need to modify a JavaScript function of the theme and later need to print the dashboard,
      * then use the 'setThemeProcessorCall' instead.
      *
      * Examples:
@@ -97,6 +97,7 @@ export interface IReportParam {
 
 export interface IOpenGadgetOptions {
 
+    isGadget: true,
     /**
      * Full path of the gadget (e.g., shared:/marc/my-gadget).
      */
@@ -115,6 +116,13 @@ export interface IOpenMdxConsoleOptions {
 
 export interface IOpenReportOptions {
 
+    isAppViewer?: boolean;
+
+    isGadget?: boolean;
+
+    /**
+     * The dashboard is embedded into another dashboard.
+     */
     embedded?: boolean;
 
     /**

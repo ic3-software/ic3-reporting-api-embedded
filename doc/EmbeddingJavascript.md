@@ -1,6 +1,6 @@
-## icCube Dashboards API: Javascript Integration
+## icCube Dashboards API: JavaScript Integration
 
-The Javascript API allows for loading the icCube Dashboards within an `iframe` or a `div` and then drive the
+The JavaScript API allows for loading the icCube Dashboards within an `iframe` or a `div` and then drive the
 Dashboards application via the `IReporting` instance sent back icCube via a callback.
 
 This integration allows for a two ways communication between the host application and the icCube Dashboards:

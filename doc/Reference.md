@@ -14,7 +14,7 @@ Refer to this [page](EmbeddingPermaLink.md) for more details.
 
 ### Driving icCube Dashboards from the Host Application
 
-A more complex approach is to use the Javascript API to embed the icCube Dashboards application. The API is
+A more complex approach is to use the JavaScript API to embed the icCube Dashboards application. The API is
 providing an instance of the icCube Dashboards application that is then used to open a dashboard, send events
 to a dashboard, listen to events from a dashboard, etc... This integration allows for a two ways communication
 between the host application and the icCube Dashboards.
@@ -24,7 +24,7 @@ The `div` approach is more flexible regarding the CSS configuration of the main 
 the host application and should be more flexible and more efficient regarding the loading time of the required
 JS libraries.
 
-In case using the `div` approach is not possible (e.g., Javascript code clash between icCube and the host
+In case using the `div` approach is not possible (e.g., JavaScript code clash between icCube and the host
 application), using an `iframe` is the way to go. Please refer to this [page](iFrameUsageConsideration.md)
 for more details about using an `iframe` within the host application.
 

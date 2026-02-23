@@ -1,6 +1,6 @@
-## icCube Javascript Configuration
+## icCube JavaScript Configuration
 
-Once loaded, the behavior of the icCube Javascript code can be configured in two ways: 
+Once loaded, the behavior of the icCube JavaScript code can be configured in two ways: 
 * The `iframe` approach: via dedicated URL parameters,
 * The [div](#div) approach: the parameters can be specified with the `DashboardsLoaderDivContext`.
 

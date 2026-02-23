@@ -4,7 +4,7 @@ The icCube Dashboards API (embedded) allows for embedding icCube Dashboards into
 
 ### Getting Started
 
-The API is written in Javascript/Typescript and is available as an `npm` package:
+The API is written in JavaScript/TypeScript and is available as an `npm` package:
 
      npm install @ic3/reporting-api-embedded@latest
 
