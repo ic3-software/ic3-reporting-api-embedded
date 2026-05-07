@@ -1,6 +1,7 @@
 {
   "name": "@ic3/reporting-api-embedded",
-  "version": "9.1.1",
+  "version": "9.2.0",
+  "license": "MIT",
   "description": "icCube dashboards API (embedded)",
   "homepage": "https://github.com/ic3-software/ic3-reporting-api-embedded",
   "repository": "https://github.com/ic3-software/ic3-reporting-api-embedded",

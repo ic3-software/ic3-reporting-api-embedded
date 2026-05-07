@@ -17,6 +17,10 @@ the message `ic3-custom-headers-reply` to update the actual HTTP headers to send
 ```javascript
 // Listen to the post message send by the icCube JS libraries.
 // The `type` of this message is `ic3-custom-headers-request`.
+// `refreshTokenForicCube` is the callback to set the authorization header
+
+let refreshTokenForicCube = () => {}; // or null if you want to know when it has been set
+
 window.addEventListener("message", event => {
 
     const data = event.data;
@@ -31,25 +35,44 @@ window.addEventListener("message", event => {
             ? document.getElementById(ic3customheaders)?.["contentWindow"]
             : window
         ;
-
-        target && target.postMessage(
-            {
-                type: "ic3-custom-headers-reply",
-                data: {
-                    headers: {
-                        "Authorization": "JWT @xyz",
+        if ( target == null) {
+            console.error("Unable to get target for icCube", ic3customheaders);
+            return;
+        }
+        refreshTokenForicCube = (auth) => {
+            target.postMessage(
+                {
+                    type: "ic3-custom-headers-reply",
+                    data: {
+                        headers: {
+                            "Authorization": auth,
+                        }
                     }
-                }
-            },
-            "*"
-        );
+                },
+                "*"
+            );
+        }
+        // send to icCube the Authorization header
+        refreshTokenForicCube("JWT @xyz");
     }
 })
+
+// on new authorization header (i.e. token refresh)
+refreshTokenForicCube(newToken);
 ```
 
 Any value can be used for this parameter. Its value is passed to the `ic3-custom-headers-request` message
 in the `data.ic3customHeaders` field. The host application can then act accordingly: e.g., identifying an
-`iframe` instance for posting back the reply.
+`iframe` instance for posting back the reply. This should be done each time the authorization header has changed,
+for example on token refresh.
+
+#### Simplified worflow
+
+1) The application frontend registers a listener in the main *window.addEventListener*.
+2) icCube, that is embedded, sends once an init message to the listener.
+3) The message is received by the application listener that builds the callback, *target*.
+4) The application frontend can now update the header with the needed information.
+5) When needed, Step 4) can be called each time a token is refreshed.
 
 ### URL Parameter: ic3configuration
 
