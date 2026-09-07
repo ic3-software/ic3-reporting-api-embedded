@@ -186,6 +186,11 @@ export interface IDashboardsLoaderParams {
     urlAppDataSource?: string;
 
     /**
+     * ($urlHome)/icCube/ai  (e.g., https://dev.icCube.com/icCube/ai).
+     */
+    urlAiDataSource?: string;
+
+    /**
      * ?ic3demo=
      */
     urlSuffix?: string;
@@ -308,6 +313,11 @@ export class DashboardsLoaderDivContext {
      */
     private readonly urlAppDataSource?: string;
 
+    /**
+     * ($urlHome)/icCube/ai  (e.g., https://dev.icCube.com/icCube/ai).
+     */
+    private readonly urlAiDataSource?: string;
+
     private buildVersion = "";
     private buildTimestamp = "";
 
@@ -335,6 +345,7 @@ export class DashboardsLoaderDivContext {
         this.urlAppDoc = opts.urlAppDoc ?? home("/icCube/report/ic3-reporting/doc");
         this.urlAppDocEx = opts.urlAppDocEx;
         this.urlAppDataSource = opts.urlAppDataSource ?? home("/icCube/gvi");
+        this.urlAiDataSource = opts.urlAiDataSource ?? home("/icCube/ai");
 
         console.log("[Loader] (div)           suffix :" + opts.urlSuffix);
         console.log("[Loader] (div)             home :" + opts.urlHome);
@@ -346,6 +357,7 @@ export class DashboardsLoaderDivContext {
         console.log("[Loader] (div)        urlAppDoc :" + this.urlAppDoc);
         console.log("[Loader] (div)      urlAppDocEx :" + this.urlAppDocEx);
         console.log("[Loader] (div) urlAppDataSource :" + this.urlAppDataSource);
+        console.log("[Loader] (div)  urlAiDataSource :" + this.urlAiDataSource);
 
         // Start loading all required initial libraries (in the background).
         this.libLoader = this.loadLibs();
@@ -504,6 +516,7 @@ export class DashboardsLoaderDivContext {
                     wnd["__ic3_div_app_doc_path__"] = this.urlAppDoc;
                     wnd["__ic3_div_app_doc_ex_path__"] = this.urlAppDocEx;
                     wnd["__ic3_div_app_datasource_path__"] = this.urlAppDataSource;
+                    wnd["__ic3_div_ai_datasource_path__"] = this.urlAiDataSource;
 
                     {
                         // embedding a previous version
