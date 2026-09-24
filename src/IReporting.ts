@@ -123,7 +123,7 @@ export interface IOpenReportOptions {
     /**
      * The dashboard is embedded into another dashboard.
      */
-    embedded?: boolean;
+    embeddedNS?: string /* nsUid */;
 
     /**
      * Full path of the report (e.g., shared:/marc/my-report).
