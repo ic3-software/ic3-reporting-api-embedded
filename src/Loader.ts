@@ -1,4 +1,6 @@
 import {IReporting} from "./IReporting";
+import {FilterPanelViewStorageFactory} from "./ViewsAPI";
+
 export type AppType =
     "adminEditor" /* report administration */ |
     "appEditor" /* report application (i.e. lists of reports) editor */ |
@@ -8,10 +10,9 @@ export type AppType =
     "dashboardViewer" /* report viewer */ |
     "embedded-div-init" |
     "gadgetEditor" /* gadget editor */ |
-    "mdxConsole" /* MDX Console (replacing the Server UI MDX IDE) */
+    "mdxConsole" /* MDX Console (replacing the Server UI MDX IDE) */ |
+    "chat"
     ;
-
-import {FilterPanelViewStorageFactory} from "./ViewsAPI";
 
 
 export interface IDashboardsLoaderFrameParams {
@@ -104,7 +105,7 @@ export function DashboardsLoaderFrame(params: IDashboardsLoaderFrameParams) {
     }
 
     const sep = url.indexOf("?") === -1 ? "?" : "&";
-    const src = url + sep + "ic3callback=ic3loader." + containerId;
+    const src = url + sep + "ic3callback=" + encodeURIComponent("ic3loader." + containerId);
 
     iFrame.setAttribute("src", src);
     iFrame.setAttribute("data-ic3", key);
@@ -427,6 +428,13 @@ export class DashboardsLoaderDivContext {
                         resolve(reporting)
                     },
 
+                    errorCallback: (error: string) => {
+
+                        console.log("[Loader] (div) loadLibsAndInitialize failed : " + error);
+
+                        reject(error)
+                    },
+
                 });
 
             });
@@ -447,7 +455,7 @@ export class DashboardsLoaderDivContext {
             const wnd = window as any;
             const start = performance.now();
 
-            this.libLoader = fetch(this.urlAppIndexHtml, {cache: 'no-cache'})
+            const libLoader: Promise<unknown> = fetch(this.urlAppIndexHtml, {cache: 'no-cache'})
                 .then(response => {
 
                     if (!response.ok) {
@@ -525,7 +533,7 @@ export class DashboardsLoaderDivContext {
                     }
 
                     return this.loadScript(scriptUrl).catch(reason => {
-                        Promise.reject("[Loader] error while loading the main.js script : " + scriptUrl);
+                        return Promise.reject("[Loader] error while loading the main.js script : " + scriptUrl);
                     })
 
                 }).then(() => {
@@ -561,9 +569,17 @@ export class DashboardsLoaderDivContext {
                         })();
                     })
 
-                }).catch(
-                    reason => Promise.reject(reason.message ?? reason)
-                );
+                }).catch(reason => {
+
+                    // Do not cache the failure (e.g., not logged yet): the next call is starting over.
+                    if (this.libLoader === libLoader) {
+                        this.libLoader = undefined;
+                    }
+
+                    return Promise.reject(reason.message ?? reason);
+                });
+
+            this.libLoader = libLoader;
         }
 
         return this.libLoader;

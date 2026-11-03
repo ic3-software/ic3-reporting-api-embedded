@@ -55,9 +55,8 @@ export interface IReportDefinition {
     setThemeProcessorCall(call: IThemeProcessorCall): void;
 }
 
-export interface IThemeProcessorCall
-{
-    name : string;
+export interface IThemeProcessorCall {
+    name: string;
     params?: any;
 
 }
@@ -189,6 +188,14 @@ export interface IOpenReportAppOptions {
     onSuccess?: () => void;
 }
 
+export interface IOpenChatOptions {
+    /**
+     * These records are added as context to each question in the AI conversation. Use this to forward info from the
+     * host app into the AI chat.
+     */
+    getAiContext?: () => Record<string, string>;
+}
+
 export interface IPathInfo {
 
     name: string;
@@ -286,5 +293,10 @@ export interface IReporting {
      * @param token as returned via the 'onSuccess' method in the 'fireAppNotification' callback.
      */
     cancelAppNotification(token: IAppNotificationToken): void;
+
+    /**
+     * @param pushToHistory    defaulted to true
+     */
+    openChat(options?: IOpenChatOptions, pushToHistory?: boolean): void;
 
 }
